@@ -18,4 +18,7 @@ export class ShoppingListService {
     this.ingredientsChanged.emit(this.getIngredients());
   }
 
+  addNewItems(ingredients: Ingredient[]) {
+    this.ingredients = [...this.ingredients, ...ingredients];
+  }
 }
