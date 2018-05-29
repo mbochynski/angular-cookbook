@@ -27,9 +27,22 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit" [disabled]="f.invalid">Add</button>
-          <button class="btn btn-danger" type="button">Delete</button>
-          <button class="btn" type="button">Clear</button>
+          <button class="btn btn-success" type="submit" [disabled]="f.invalid">
+            {{ editMode ? 'Update' : 'Add' }}
+          </button>
+          <button 
+            class="btn btn-danger" 
+            type="button"
+            [disabled]="!editMode"
+            (click)="onDeleteClick()">
+            Delete
+          </button>
+          <button 
+            class="btn" 
+            type="button" 
+            (click)="onClearClick()">
+            Clear
+          </button>
         </div>
       </div>
     </form>
