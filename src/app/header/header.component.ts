@@ -26,4 +26,9 @@ export class HeaderComponent implements OnInit {
   onFetch() {
     this.storageService.getRecipes();
   }
+
+  onLogout() {
+    this.authService.logout();
+    
+  }
 }
