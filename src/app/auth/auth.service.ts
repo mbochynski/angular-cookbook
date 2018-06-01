@@ -13,10 +13,10 @@ export class AuthService {
   }
 
   signinUser(email: string, password: string) {
-    console.log('creating user');
+    console.log('logging in');
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
-        (data) => console.log('create user complete', data)
+        (data) => console.log('logged with data:', data)
       )
       .catch(
         error => console.log(error)
