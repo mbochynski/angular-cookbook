@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './recipes/recipe.service';
 import { StorageService } from './shared/storage.service';
 import { AuthService } from './auth/auth.service';
-import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthGuard } from './auth/auth.guard';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
@@ -27,7 +26,6 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpModule,
     AuthModule,
-    RecipesModule,
     ShoppingListModule,
     SharedModule,
   ],
