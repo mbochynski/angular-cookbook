@@ -16,13 +16,12 @@ export class StorageService {
     const recipes = this.recipeService.getRecipes();
     const token = this.authService.token;
     return this.http.put(`https://angularcourse-466aa.firebaseio.com/recipes.json`, recipes, {
-      params: new HttpParams().set('auth', token)
     });
   }
 
   getRecipes() {
     const token = this.authService.token;
-    return this.http.get<Recipe[]>(`https://angularcourse-466aa.firebaseio.com/recipes.json?auth=${token}`)
+    return this.http.get<Recipe[]>(`https://angularcourse-466aa.firebaseio.com/recipes.json`)
       .pipe(
         map((recipes) => {
           return recipes.map((recipe: Recipe) => {
