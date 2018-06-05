@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { RecipeService } from '../recipes/recipe.service';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../recipes/recipe.model';
 import { AuthService } from '../auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class StorageService {
 
   constructor(private authService: AuthService,
-              private http: Http, 
+              private http: HttpClient, 
               private recipeService: RecipeService) { }
 
   storeRecipes() {
@@ -20,10 +20,9 @@ export class StorageService {
 
   getRecipes() {
     const token = this.authService.token;
-    return this.http.get(`https://angularcourse-466aa.firebaseio.com/recipes.json?auth=${token}`)
+    return this.http.get<Recipe[]>(`https://angularcourse-466aa.firebaseio.com/recipes.json?auth=${token}`)
       .pipe(
-        map((response: Response) => {
-          const recipes: Recipe[] = response.json();
+        map((recipes) => {
           return recipes.map((recipe: Recipe) => {
             if (!recipe.ingredients) {
               recipe.ingredients = [];
