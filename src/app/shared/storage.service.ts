@@ -3,7 +3,7 @@ import { RecipeService } from '../recipes/recipe.service';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../recipes/recipe.model';
 import { AuthService } from '../auth/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class StorageService {
@@ -15,7 +15,9 @@ export class StorageService {
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
     const token = this.authService.token;
-    return this.http.put(`https://angularcourse-466aa.firebaseio.com/recipes.json?auth=${token}`, recipes);
+    return this.http.put(`https://angularcourse-466aa.firebaseio.com/recipes.json`, recipes, {
+      params: new HttpParams().set('auth', token)
+    });
   }
 
   getRecipes() {
