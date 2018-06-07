@@ -61,7 +61,7 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
     case ShoppingListActions.START_EDIT:
       return {
         ...state,
-        editedIngredient: action.payload.ingredient,
+        editedIngredient: {...state.ingredients[action.payload.index]},
         editedIngredientIndex: action.payload.index,
       }
     default:

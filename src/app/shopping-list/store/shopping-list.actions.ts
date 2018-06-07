@@ -34,7 +34,7 @@ export class UpdateIngredient implements Action {
 export class StartEdit implements Action {
   readonly type = START_EDIT;
 
-  constructor(public payload: { index: number, ingredient: Ingredient }) {};
+  constructor(public payload: { index: number }) {};
 }
 
 export type ShoppingListActions = AddIngredient
