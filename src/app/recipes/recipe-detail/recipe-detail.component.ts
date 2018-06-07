@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions'
 import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
-import { Ingredient } from '../../shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-detail',
