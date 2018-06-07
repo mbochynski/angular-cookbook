@@ -23,7 +23,7 @@ export class ShoppingListComponent implements OnInit {
 
   onIngredientClick(index: number) {
     this.store.dispatch(new ShoppingListActions.StartEdit({
-      index: index,
+      index,
     }));
   }
 }
