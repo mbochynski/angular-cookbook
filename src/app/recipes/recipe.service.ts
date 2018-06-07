@@ -3,14 +3,11 @@ import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
-import { Store } from "@ngrx/store";
-import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions'
 
-@Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  constructor(private store: Store<{ shoppingList: { ingredients: Ingredient[] }}>) {}
+  constructor() {}
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -44,10 +41,6 @@ export class RecipeService {
 
   getRecipe(id: number) {
     return this.recipes[id];
-  }
-
-  addRecipeIngredientsToShoppingList(recipe: Recipe) {
-    this.store.dispatch(new ShoppingListActions.AddIngredients(recipe.ingredients));
   }
 
   addRecipe(recipe: Recipe) {
